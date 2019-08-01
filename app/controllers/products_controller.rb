@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    render json: @products, status: 200
+    # render json: @products, status: 200
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @products }
+    end
   end
 
   def inventory
