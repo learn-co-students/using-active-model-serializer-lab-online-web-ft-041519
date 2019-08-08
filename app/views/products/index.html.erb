@@ -9,11 +9,13 @@
 $(function() {
   $(".js-more").on("click", function() {
     var id = $(this).data("id");
-      $.get("/products/" + id + ".json", function(inventory) {
-        var inventoryText 0){
+      $.get("/products/" + id + ".json", function(data) {
+        if (data.inventory === 0) {
           inventoryText = "<strong>Sold Out</strong>";
+        } else {
+          inventoryText = "<strong>Available</strong>"
         }
-        var descriptionText = "<p>" + description + "</p><p>" + inventoryText + "</p>";
+        var descriptionText = "<p>" + data.description + "</p><p>" + inventoryText + "</p>";
         $("#product-" + id).html(descriptionText);
       });
   });

@@ -8,6 +8,7 @@
 $(function () {
   $(".js-next").on("click", function(event) {
     event.preventDefault()
+    console.log("in event")
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/products/" + nextId + ".json", function(data) {
       var product = data;
